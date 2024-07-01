@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="container wave-box-wrapper">
+		<div class="wave-box"></div>
+		<form action="{% url 'todoapp:update_todo' listid %}" method="post" class="update-todo" id="update-todo">
+			{% csrf_token %}
+			<div class="col-md-8 offset-md-2">
+				<div class="card">
+					<div class="card-header">Edit</div>
+					<div class="card-body">
+						<div class="form-group row">
+							<label for="{{ form.title.id_for_label }}" class="col-md-3 control-label text-md-right">Title<span class="text-danger">*</span>:</label>
+							<div class="col-md-7">
+								{{ form.title }}
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="{{ form.status.id_for_label }}" class="col-md-3 control-label text-md-right">Status:</label>
+							<div class="col-md-7">
+								{{ form.status }}
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="{{ form.description.id_for_label }}" class="col-md-3 control-label text-md-right">Description:</label>
+							<div class="col-md-7">
+								{{ form.description }}
+							</div>
+						</div>
+						<div class="col-md-7 offset-md-3 px-0 px-xl-2">
+							<input type="submit" value="Update" class="btn btn-primary">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}

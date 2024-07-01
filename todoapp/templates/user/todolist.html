@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="container wave-box-wrapper">
+		<div class="wave-box"></div>
+		<div class="row">
+			<div class="col-sm-12 my-4">
+				<div class="card">
+					<div class="card-header">
+						<h4>TODO List</h4>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered table-hover" id='table_order'>
+								<thead>
+									<tr>
+										<th>Title</th>
+										<th>Status</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for item in todolists %}
+										<tr>
+										<td>{{item.title}}</td>
+										<td>
+											{% comment %} <form method="post" action="#" class="form-inline">
+												<input type="hidden" name="action" value="edit" />
+												<input type="hidden" name="id" value="{{ item.id }}" /> {% endcomment %}
+												{% if item.status == 1 %}
+												<p>Completed</p>
+												<input type="hidden" name="id" value="{{ item.id }}" />
+												{% comment %} <input type="hidden" class="status" name="status" value="{{item.status}}" /> {% endcomment %}
+												{% else %}
+												<p>Not Completed</p>
+												<input type="hidden" name="id" value="{{ item.id }}" />
+												{% comment %} <input type="hidden" class="status" name="status" value="{{item.status}}" /> {% endcomment %}
+												{% endif %}
+											{% comment %} </form> {% endcomment %}
+										</td>
+										<td>
+											<a href="{% url 'todoapp:update_todo' item.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> Edit</a>
+											<a href="{% url 'todoapp:delete_todo' item.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-save"></span> Delete</a>
+										</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
