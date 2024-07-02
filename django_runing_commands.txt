@@ -1,0 +1,10 @@
+0. create virtusal enviroment using buildin django 'venu' module command=> python -m venv venv
+1. activate the virtusal enviroment in django command=> .\venv_site\Scripts\activate
+2. deactivate the virtusal enviroment command=> deactivate
+3. To keep track of the packages installed in your virtual environment command=> pip freeze > requirements.txt
+4. Install Django in the Virtual Environment command=> pip install django
+5. Create a Django Project command=> django-admin startproject myproject .
+6. Navigate into your project directory and create a new app using commad=> python manage.py startapp myapp
+7. After creating modal create the initial database migrations for your app using command=> python manage.py makemigrations myapp
+8. after creating migration migrate to the database using command=> python manage.py migrate
+9. Start the Django development server command=> python manage.py runserver

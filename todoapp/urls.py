@@ -6,6 +6,7 @@ from . import views
 app_name = 'todoapp'
 
 urlpatterns = [
+	path('', views.all_todolist, name='index'),
     path('user/', include([
         path('login/', views.user_login, name='user_login'),
         path('register/', views.user_register, name='user_register'),
